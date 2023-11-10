@@ -2,6 +2,7 @@
 
 # Library imports (sys used for exiting the game)
 import sys
+import asyncio
 from time import sleep
 import pygame
 import random
@@ -64,7 +65,7 @@ class SpaceInvaders:
         # Create instance of scoreboard
         self.score = Scoreboard(self)
 
-    def run_game(self):
+    async def main(self):
         """Start the main loop for game"""
 
         while True:
@@ -92,6 +93,7 @@ class SpaceInvaders:
             # The update screen also needs to be outside of game_active
             # This is for menu activity
             self._update_screen()
+            await asyncio.sleep(0)
 
     def _check_menu_events(self):
         """Respond to any menu activity when game not active"""
@@ -100,7 +102,7 @@ class SpaceInvaders:
         for event in pygame.event.get():
             # If red cross is clicked with mouse, game closes
             if event.type == pygame.QUIT:
-                self.store_high_score()
+                # self.store_high_score()
                 sys.exit()
 
             # If mouse button is clicked anywhere in the play button,
@@ -116,7 +118,7 @@ class SpaceInvaders:
         for event in pygame.event.get():
             # If red cross is clicked with mouse, game closes
             if event.type == pygame.QUIT:
-                self.store_high_score()
+                # self.store_high_score()
                 sys.exit()
 
             # If a key is pressed down, call keydown events method
@@ -129,7 +131,7 @@ class SpaceInvaders:
 
             # Quit game if 'q' is pressed
             elif event.type == pygame.K_q:
-                self.store_high_score()
+                # self.store_high_score()
                 sys.exit()
 
     def _check_keydown_events(self, event):
@@ -153,7 +155,7 @@ class SpaceInvaders:
             self._fire_bullet()
 
         elif event.key == pygame.K_q:
-            self.store_high_score()
+            # self.store_high_score()
             # Quit game if 'q' is pressed
             sys.exit()
 
@@ -403,7 +405,7 @@ class SpaceInvaders:
             self._reset_game()
         else:
             # End game, and set waiting flag to true, and make mouse visible
-            self.store_high_score()
+            # self.store_high_score()
             self.stats.game_active = False
             self.play.waiting = True
             pygame.mouse.set_visible(True)
@@ -435,7 +437,7 @@ class SpaceInvaders:
             else:
                 # End game, and set waiting flag to true, 
                 # and make mouse visible
-                self.store_high_score()
+                # self.store_high_score()
                 self.stats.game_active = False
                 self.play.waiting = True
                 pygame.mouse.set_visible(True)
@@ -462,7 +464,7 @@ class SpaceInvaders:
             self._reset_game()
         else:
             # End game, and set waiting flag to true, and make mouse visible
-            self.store_high_score()
+            # self.store_high_score()
             self.stats.game_active = False
             self.play.waiting = True
             pygame.mouse.set_visible(True)
@@ -574,7 +576,8 @@ class SpaceInvaders:
                     self._countdown()
 
             # Make the most recently drawn screen visible
-            pygame.display.flip()
+            # pygame.display.flip()
+            pygame.display.update()
 
         # Reset necessary flags
         self.ship.ship_hit = False
@@ -680,7 +683,7 @@ class SpaceInvaders:
 
         # Reset all game_stats
         self.stats.reset_all_stats()
-        self.stats.get_high_score()
+        # self.stats.get_high_score()
         self.score.prep_score()
         self.score.prep_level()
         self.score.prep_ship_lives()
@@ -689,4 +692,4 @@ class SpaceInvaders:
 if __name__ == '__main__':
     # Make a game instance, then call to run
     si = SpaceInvaders()
-    si.run_game()
+    asyncio.run(si.main())

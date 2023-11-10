@@ -27,7 +27,7 @@ class Ship(Sprite):
         self.screen_rect = si_game.screen.get_rect()
 
         # Load the ship image and get its rect - then update mask
-        self.image = pygame.image.load('images\\ship.png')
+        self.image = pygame.image.load(self.settings.IMAGE_PATH + "ship.png")
         self.rect = self.image.get_rect()
 
         # Define top of rect for Kamikaze move

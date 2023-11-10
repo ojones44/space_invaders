@@ -11,13 +11,13 @@ class GameStats:
         self.settings = si_game.settings
 
         # High score attribute
-        self.high_score_file = 'images\\high_score.txt'
+        # self.high_score_file = 'high_score.txt'
 
         # Initialize this attribute within the method call, instead of init
         self.reset_all_stats()
 
         # Get the highest score
-        self.get_high_score()
+        # self.get_high_score()
 
         # Start space Invaders when this flag is True
         self.game_active = False

@@ -1,6 +1,7 @@
 # SETTINGS MODULE
 
 import pygame.font
+from os.path import abspath, dirname
 
 
 class Settings:
@@ -15,6 +16,13 @@ class Settings:
 
         # Time delay / FPS
         self.fps = 120
+
+        # -------------------------- #
+
+        # Paths
+
+        self.BASE_PATH = abspath(dirname(__file__))
+        self.IMAGE_PATH = self.BASE_PATH + "/images/"
 
         # -------------------------- #
 

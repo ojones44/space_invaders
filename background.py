@@ -17,7 +17,7 @@ class Background:
         self.settings = si_game.settings
 
         # Assign image to attribute and get its rect
-        self.image = pygame.image.load('images\\bg.jpg')
+        self.image = pygame.image.load(self.settings.IMAGE_PATH + 'bg.jpg')
         self.scale_bg = pygame.transform.scale(
                 self.image, (self.settings.screen_width,
                              self.settings.screen_height))

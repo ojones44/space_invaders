@@ -31,12 +31,12 @@ class Scoreboard():
 
         # Import font and colour settings
         self.score_text = self.settings.score_font_colour
-        self.high_score_text = self.settings.hscore_font_colour
+        # self.high_score_text = self.settings.hscore_font_colour
         self.font = self.settings.scoreboard_font
 
         # Prepare score images
         self.prep_score()
-        self.prep_high_score()
+        # self.prep_high_score()
         self.prep_ship_lives()
 
         # Prepare level
@@ -105,7 +105,7 @@ class Scoreboard():
 
         # Blit method takes in parameters that we set in prep
         self.screen.blit(self.score_image, self.score_rect)
-        self.screen.blit(self.high_score_image, self.high_score_rect)
+        # self.screen.blit(self.high_score_image, self.high_score_rect)
         self.screen.blit(self.level_image, self.level_rect)
         self.ships.draw(self.screen)
 

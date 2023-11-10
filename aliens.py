@@ -30,14 +30,14 @@ class Alien(Sprite):
         self.screen_rect = si_game.screen.get_rect()
 
         # Load the alien images at random and get its rect.
-        self.images = ['images\\a1.png',
-                       'images\\a2.png',
-                       'images\\a3.png',
-                       'images\\a4.png',
-                       'images\\a5.png',
-                       'images\\a6.png',
-                       'images\\a7.png',
-                       'images\\a1.png',
+        self.images = [self.settings.IMAGE_PATH + 'a1.png',
+                       self.settings.IMAGE_PATH + 'a2.png',
+                       self.settings.IMAGE_PATH + 'a3.png',
+                       self.settings.IMAGE_PATH + 'a4.png',
+                       self.settings.IMAGE_PATH + 'a5.png',
+                       self.settings.IMAGE_PATH + 'a6.png',
+                       self.settings.IMAGE_PATH + 'a7.png',
+                       self.settings.IMAGE_PATH + 'a1.png',
                        ]
 
         self.image = pygame.image.load(random.choice(self.images))
