@@ -4,7 +4,7 @@ import pygame.font
 
 
 class GameStartButton:
-    """Class to generate game buttons"""
+    """Class to generate space_invaders buttons"""
 
     def __init__(self, si_game):
         """Initialize button attributes"""
@@ -32,7 +32,7 @@ class GameStartButton:
         self.countdown = self.settings.countdown
 
         # Define a blank attribute which we start ticking only when
-        # play button has been pressed in main game file
+        # play button has been pressed in main space_invaders file
         self.last_count = None
 
         # The button message needs to be prepped only once
@@ -71,7 +71,7 @@ class GameStartButton:
 
         # Set local variable, and past it the render method
         # for our countdown value which is adjusted through each
-        # iteration of the game loop once the play button has been pressed
+        # iteration of the space_invaders loop once the play button has been pressed
         count = self.countdown_font.render(
             str(self.countdown), True,
             self.settings.countdown_colour)

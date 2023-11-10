@@ -2,7 +2,7 @@
 <h1>
 👾 Space Invaders 👾
 </h1>
-<img src="./images/space_invaders.png" width="400" />
+<img src="./game/images/space_invaders.png" width="400" />
 </div>
 
 ---
@@ -26,7 +26,7 @@ that I ever made, so I decided to leave it as it is.
 Did anyone ever play this game on PS1? 
 
 <div align="center">
-<img src="./images/ps1_game_cover.jpg" />
+<img src="./game/images/ps1_game_cover.jpg" />
 </div>
 
 I loved this game. And intially, I had set out to make this game just like 

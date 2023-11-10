@@ -17,7 +17,7 @@ class Ship(Sprite):
         # attribute equal to the SpaceInvaders screen
         self.screen = si_game.screen
 
-        # Import game settings
+        # Import space_invaders settings
         self.settings = si_game.settings
 
         # Import stats
@@ -89,7 +89,7 @@ class Ship(Sprite):
             self.rect.y = self.y
 
     def ship_centre(self):
-        """Centre the ship on the game screen when a life is lost"""
+        """Centre the ship on the space_invaders screen when a life is lost"""
 
         # Ship rectangle centre bottom is being put in screen middle bottom
         self.rect.centerx = self.screen_rect.centerx

@@ -1,6 +1,6 @@
 # All images provided by www.flaticon.com (Smashicon and Freepik)
 
-# Library imports (sys used for exiting the game)
+# Library imports (sys used for exiting the space_invaders)
 import sys
 import asyncio
 from time import sleep
@@ -20,10 +20,10 @@ from scoreboard import Scoreboard
 
 
 class SpaceInvaders:
-    """Overall class to manage game assets"""
+    """Overall class to manage space_invaders assets"""
 
     def __init__(self):
-        """Initialize the whole game"""
+        """Initialize the whole space_invaders"""
 
         # method for pygame needed to initialize its background settings
         pygame.init()
@@ -66,12 +66,12 @@ class SpaceInvaders:
         self.score = Scoreboard(self)
 
     async def main(self):
-        """Start the main loop for game"""
+        """Start the main loop for space_invaders"""
 
         while True:
 
             # Limit Python to a frame rate. Without this, Python tries to run
-            # the game as fast as possible, and also speeds up when files get
+            # the space_invaders as fast as possible, and also speeds up when files get
             # deleted. This keeps it the same speed
             self.clock.tick(self.settings.fps)
 
@@ -80,7 +80,7 @@ class SpaceInvaders:
             if not self.stats.game_active:
                 self._check_menu_events()
 
-            # While game is active, run these methods
+            # While space_invaders is active, run these methods
             if self.stats.game_active:
                 self._check_events()
                 self.ship.update_move()
@@ -96,11 +96,11 @@ class SpaceInvaders:
             await asyncio.sleep(0)
 
     def _check_menu_events(self):
-        """Respond to any menu activity when game not active"""
+        """Respond to any menu activity when space_invaders not active"""
 
         # Loop through events and respond to user keyboard inputs
         for event in pygame.event.get():
-            # If red cross is clicked with mouse, game closes
+            # If red cross is clicked with mouse, space_invaders closes
             if event.type == pygame.QUIT:
                 # self.store_high_score()
                 sys.exit()
@@ -116,7 +116,7 @@ class SpaceInvaders:
 
         # Loop through events and respond to user keyboard inputs
         for event in pygame.event.get():
-            # If red cross is clicked with mouse, game closes
+            # If red cross is clicked with mouse, space_invaders closes
             if event.type == pygame.QUIT:
                 # self.store_high_score()
                 sys.exit()
@@ -129,7 +129,7 @@ class SpaceInvaders:
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
 
-            # Quit game if 'q' is pressed
+            # Quit space_invaders if 'q' is pressed
             elif event.type == pygame.K_q:
                 # self.store_high_score()
                 sys.exit()
@@ -156,7 +156,7 @@ class SpaceInvaders:
 
         elif event.key == pygame.K_q:
             # self.store_high_score()
-            # Quit game if 'q' is pressed
+            # Quit space_invaders if 'q' is pressed
             sys.exit()
 
     def _check_keyup_events(self, event):
@@ -175,7 +175,7 @@ class SpaceInvaders:
 
         # The reason I have coded the play button with an if statement is
         # because I didn't want to call _create_fleet every time. As I'm using
-        # random images, they'll keep changing before the game has even started
+        # random images, they'll keep changing before the space_invaders has even started
 
         # Store a variable of True or False based on whether the mouse has been
         # clicked over the play button rectangle
@@ -192,7 +192,7 @@ class SpaceInvaders:
             # Start the count timer for countdown, only once button clicked
             self.play.last_count = pygame.time.get_ticks()
 
-            # Play button will remove and set new game
+            # Play button will remove and set new space_invaders
             self._update_screen()
 
             # Make cursor invisible only in pygame window
@@ -210,7 +210,7 @@ class SpaceInvaders:
             # Start the count timer for countdown, only once button clicked
             self.play.last_count = pygame.time.get_ticks()
 
-            # Restart game
+            # Restart space_invaders
             self._restart_game()
 
             # Make cursor invisible only in pygame window
@@ -262,7 +262,7 @@ class SpaceInvaders:
             # Increase last alien speed
             self.settings.one_alien_left()
 
-        # Check if all aliens are defeated to start new game/level
+        # Check if all aliens are defeated to start new space_invaders/level
         elif len(self.aliens) == 0:
             if self.settings.sped_up:
                 # Reset alien speed to current speed
@@ -335,7 +335,7 @@ class SpaceInvaders:
     def _detect_alien_ship_collisions(self):
         """Detect collisions of alien on ship"""
 
-        # Detect alien collision on ship, reset game if true
+        # Detect alien collision on ship, reset space_invaders if true
         if pygame.sprite.spritecollideany(self.ship, self.alien_bullets):
             if self.settings.sped_up:
                 # Reset alien speed to current speed if last alien touched ship
@@ -347,11 +347,11 @@ class SpaceInvaders:
             self._ship_hit_by_alien()
 
     def _check_aliens_bottom(self):
-        """End/restart game if aliens reach the bottom off the screen"""
+        """End/restart space_invaders if aliens reach the bottom off the screen"""
 
         # Loops through aliens group and see if any have hit the screen bottom
         for alien in self.aliens.sprites():
-            # If any have, then call relevant method to reset game
+            # If any have, then call relevant method to reset space_invaders
             if alien.rect.bottom >= self.settings.screen_height:
                 self._aliens_reached_bottom()
 
@@ -384,7 +384,7 @@ class SpaceInvaders:
         self._check_aliens_bottom()
 
     def _ship_hit_by_alien(self):
-        """Reset game and reduce ship lives when hit"""
+        """Reset space_invaders and reduce ship lives when hit"""
 
         # Set ship_hit flag to True
         self.ship.ship_hit = True
@@ -401,17 +401,17 @@ class SpaceInvaders:
             # Reset health only
             self.stats.ship_health = self.settings.ship_max_health
 
-            # Reset game
+            # Reset space_invaders
             self._reset_game()
         else:
-            # End game, and set waiting flag to true, and make mouse visible
+            # End space_invaders, and set waiting flag to true, and make mouse visible
             # self.store_high_score()
             self.stats.game_active = False
             self.play.waiting = True
             pygame.mouse.set_visible(True)
 
     def _ship_hit_by_bullet(self):
-        """Reset game and reduce ship lives when hit"""
+        """Reset space_invaders and reduce ship lives when hit"""
 
         # Decrement ships health
         self.stats.ship_health -= self.settings.a_bullet_damage
@@ -432,10 +432,10 @@ class SpaceInvaders:
                 if self.settings.sped_up:
                     self.settings.reset_current_alien_speed()
 
-                # Reset game
+                # Reset space_invaders
                 self._reset_game()
             else:
-                # End game, and set waiting flag to true, 
+                # End space_invaders, and set waiting flag to true,
                 # and make mouse visible
                 # self.store_high_score()
                 self.stats.game_active = False
@@ -443,7 +443,7 @@ class SpaceInvaders:
                 pygame.mouse.set_visible(True)
 
     def _aliens_reached_bottom(self):
-        """Reset game and reduce ship lives when aliens reach bottom"""
+        """Reset space_invaders and reduce ship lives when aliens reach bottom"""
 
         # Set alien_hit_bottom flag to True
         self.settings.alien_hit_bottom = True
@@ -460,10 +460,10 @@ class SpaceInvaders:
             # Reset health only
             self.stats.ship_health = self.settings.ship_max_health
 
-            # Reset game
+            # Reset space_invaders
             self._reset_game()
         else:
-            # End game, and set waiting flag to true, and make mouse visible
+            # End space_invaders, and set waiting flag to true, and make mouse visible
             # self.store_high_score()
             self.stats.game_active = False
             self.play.waiting = True
@@ -548,7 +548,7 @@ class SpaceInvaders:
             self._reset_screen_when_life_lost()
         else:
             # Or else, if no flags are true
-            # Redraw game during each iteration of the loop
+            # Redraw space_invaders during each iteration of the loop
             self.bg.blitme()
             self.ship.blitme()
             self.ship.draw_health_bar()
@@ -565,9 +565,9 @@ class SpaceInvaders:
                 # Draw alien bullets through every iteration
                 alien_bullet.drawme()
 
-            # Draw the play button if game is not yet active
+            # Draw the play button if space_invaders is not yet active
             if self.play.waiting:
-                # Draw play button for game start prompt
+                # Draw play button for space_invaders start prompt
                 self.play.draw_button()
 
             # Blit countdown if not waiting for button to be clicked
@@ -585,7 +585,7 @@ class SpaceInvaders:
         self.ship.all_aliens_eliminated = False
 
     def store_high_score(self):
-        """Method to store high score at various points of game"""
+        """Method to store high score at various points of space_invaders"""
 
         with open(self.stats.high_score_file, 'a') as f:
             f.write(f"{str(self.stats.score)}\n")
@@ -615,7 +615,7 @@ class SpaceInvaders:
     def _reset_screen_when_life_lost(self):
         """Reset screen and pause momentarily after ship looses life"""
 
-        # Redraw game during each iteration of the loop
+        # Redraw space_invaders during each iteration of the loop
         self.bg.blitme()
         self.ship.blitme()
         self.ship.draw_health_bar()
@@ -655,7 +655,7 @@ class SpaceInvaders:
         self.stats.game_active = False
 
     def _reset_game(self):
-        """Reset game if ship health depleted or aliens have hit ship"""
+        """Reset space_invaders if ship health depleted or aliens have hit ship"""
 
         # Clear the fleet and any bullets
         self.aliens.empty()
@@ -670,7 +670,7 @@ class SpaceInvaders:
         sleep(self.settings.game_end_pause)
 
     def _restart_game(self):
-        """Reset new game if lost all lives"""
+        """Reset new space_invaders if lost all lives"""
 
         # Clear the fleet and any bullets
         self.aliens.empty()
@@ -690,6 +690,6 @@ class SpaceInvaders:
 
 
 if __name__ == '__main__':
-    # Make a game instance, then call to run
+    # Make a space_invaders instance, then call to run
     si = SpaceInvaders()
     asyncio.run(si.main())

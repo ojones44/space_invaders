@@ -10,7 +10,7 @@ class Scoreboard():
     def __init__(self, si_game):
         """initialize scoreboard attributes"""
 
-        # Create attribute of whole game
+        # Create attribute of whole space_invaders
         self.si_game = si_game
 
         # si_game is feeding Scoreboard all of SpaceInvaders, we set a
@@ -23,10 +23,10 @@ class Scoreboard():
         # Import Ship
         self.ship = si_game.ship
 
-        # Import game settings
+        # Import space_invaders settings
         self.settings = si_game.settings
 
-        # Import game stats
+        # Import space_invaders stats
         self.stats = si_game.stats
 
         # Import font and colour settings
@@ -110,7 +110,7 @@ class Scoreboard():
         self.ships.draw(self.screen)
 
     def check_high_score(self):
-        """Check if new high score set when not game active"""
+        """Check if new high score set when not space_invaders active"""
 
         if self.stats.score > self.stats.high_score:
             self.stats.high_score = self.stats.score

@@ -2,7 +2,7 @@ name: Build Space Invaders with Pygbag
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
@@ -11,18 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Checkout
       run: |
             echo "Attempting to install pygbag"
             python -m pip install pygbag
             echo "Successfully installed pygbag"
             echo "Attempting to build the game"
-            python -m pygbag --build $GITHUB_WORKSPACE/game/main.py
+            python -m pygbag --build $GITHUB_WORKSPACE/space_invaders/main.py
             echo "Successfully build the game and complied to WebAssembly"
 
     - name : "Upload to GitHub pages branch gh-pages"
       uses: JamesIves/github-pages-deploy-action@4.4.3
       with:
         branch: gh-pages
-        folder: game/build/web
+        folder: space_invaders/build/web

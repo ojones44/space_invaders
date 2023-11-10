@@ -5,10 +5,10 @@ from os.path import abspath, dirname
 
 
 class Settings:
-    """A class to store all settings for the game"""
+    """A class to store all settings for the space_invaders"""
 
     def __init__(self):
-        """Initialize the game's static settings"""
+        """Initialize the space_invaders's static settings"""
 
         self.initialize_dynamic_settings()
 
@@ -163,7 +163,7 @@ class Settings:
         self.fleet_direction = 1
 
     def increase_speed(self):
-        """Increase speed of game by specified scale"""
+        """Increase speed of space_invaders by specified scale"""
 
         # Increase the dynamic settings by the speedup scale
         self.ship_speed *= self.speedup_scale

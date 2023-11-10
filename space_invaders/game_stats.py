@@ -2,12 +2,12 @@
 
 
 class GameStats:
-    """Track stats as the game is running"""
+    """Track stats as the space_invaders is running"""
 
     def __init__(self, si_game):
         """Initialize stats"""
 
-        # Import settings from main game
+        # Import settings from main space_invaders
         self.settings = si_game.settings
 
         # High score attribute
@@ -22,11 +22,11 @@ class GameStats:
         # Start space Invaders when this flag is True
         self.game_active = False
 
-        # Any time the game is loaded this will be True
+        # Any time the space_invaders is loaded this will be True
         self.first_run = True
 
     def reset_all_stats(self):
-        """Initilalize statistics that can change during the game"""
+        """Initilalize statistics that can change during the space_invaders"""
 
         # Reset the amount of ships left
         self.ships_left = self.settings.ship_limit

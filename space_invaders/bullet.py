@@ -15,7 +15,7 @@ class Bullet(Sprite):
         # Bullet.screen attribute equal to the SpaceInvaders screen
         self.screen = si_game.screen
 
-        # Import game settings
+        # Import space_invaders settings
         self.settings = si_game.settings
 
         # Create colour attribute
